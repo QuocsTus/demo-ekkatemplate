@@ -1,5 +1,6 @@
 import React, { useState } from 'react'; // Sửa: import thêm useState
 import { CartSidebar } from './CartSideBar';
+import { Link } from 'react-router-dom';
 
 export const BodyHeader: React.FC = () => {
   // Sửa: Đưa state vào bên trong Component

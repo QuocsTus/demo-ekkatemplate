@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 // 1. Định nghĩa kiểu dữ liệu cho Item trong giỏ hàng
 interface CartItem {
@@ -56,6 +57,12 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => 
   const vat = subTotal * 0.2; // VAT 20% như trong ảnh
   const total = subTotal + vat;
 
+  const navigate = useNavigate();
+
+  const handleViewCart = () => {
+    navigate('/cart');
+    onClose();
+  };
 
   return (
     <>
@@ -130,11 +137,18 @@ export const CartSidebar: React.FC<CartSidebarProps> = ({ isOpen, onClose }) => 
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <button className="py-3 px-4 bg-blue-600 text-white font-bold rounded uppercase text-xs hover:bg-blue-700 transition-colors">
-              View Cart
+            <button onClick={handleViewCart} className="py-3 px-4 bg-blue-600 text-white font-bold uppercase text-xs hover:bg-[#555555] transition-colors">
+              <Link to="/cart" className="relative cursor-pointer">
+                View Cart
+              </Link>
             </button>
-            <button className="py-3 px-4 bg-[#555555] text-white font-bold rounded uppercase text-xs hover:bg-black transition-colors">
-              Checkout
+            <button className="py-3 px-4 bg-[#555555] text-white font-bold uppercase text-xs hover:bg-blue-600 transition-colors">
+              <Link 
+                to="/checkout" 
+                className="relative cursor-pointer"
+              >
+                Checkout
+              </Link>
             </button>
           </div>
         </div>
